@@ -1,0 +1,4 @@
+使用MSSQL結合SSIS、SSRS及SSAS來呈現報表狀況的調查結果。
+1.使用visualstudio的整合服務項目建立關聯性資料庫執行分析出資料結構。稱SSIS。
+2.使用visualstudio的報表伺服器專案製作出視覺化報表、資料清單將建置在報表服務器上面方便點閱查詢。稱SSRS。
+3 使用visualstudio的分析服務器多維度和資料採礦專案建置清洗資料，將分析結果製作成Excel報表呈現維度。稱SSAS。
