@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>SQL北風連接_SQL驗證(Mickey)</DataSourceReference>
+      <CommandText>SELECT DISTINCT FORMAT(YEAR(訂單日期),'g') AS 訂單年 FROM 訂貨主檔 ORDER BY 訂單年</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="訂單年">
+        <DataField>訂單年</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

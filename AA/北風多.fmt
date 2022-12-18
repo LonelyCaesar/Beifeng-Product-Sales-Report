@@ -1,0 +1,9 @@
+14.0
+7
+1       SQLNCHAR            0       10      ",\0"        1     客戶編號       Chinese_Taiwan_Stroke_CI_AI
+2       SQLNCHAR            0       80      ",\0"        2     公司名稱       Chinese_Taiwan_Stroke_CI_AI
+3       SQLNCHAR            0       60      ",\0"        3     連絡人         Chinese_Taiwan_Stroke_CI_AI
+4       SQLNCHAR            0       60      ",\0"        4     連絡人職稱     Chinese_Taiwan_Stroke_CI_AI
+5       SQLNCHAR            0       48      ",\0"        10    電話           Chinese_Taiwan_Stroke_CI_AI
+6       SQLNCHAR            0       48      ",\0"        11    傳真電話       Chinese_Taiwan_Stroke_CI_AI
+7       SQLNCHAR            0       120     "\r\0\n\0"   5     地址           Chinese_Taiwan_Stroke_CI_AI

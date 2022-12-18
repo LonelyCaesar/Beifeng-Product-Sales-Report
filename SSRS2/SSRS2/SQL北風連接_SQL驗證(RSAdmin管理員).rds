@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSource1">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=LAPTOP-0VBSIAN5\MSSQLSERVER01;Initial Catalog=中文北風</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>8ad4f942-3e3f-4744-a8f2-30fc5c14694b</DataSourceID>
+</RptDataSource>

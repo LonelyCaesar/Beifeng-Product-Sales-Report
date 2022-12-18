@@ -1,0 +1,1804 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/27/2022 10:19:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MB-201-00"
+  DTS:CreatorName="MB-201-00\MB-teacher"
+  DTS:Description="SSIS 封裝描述"
+  DTS:DTSID="{75AFA48B-2630-4727-943E-78FFFF6EBDE0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.229"
+  DTS:LocaleID="1028"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="封封"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{DA5B720D-D4F4-46DA-9A8B-A11F4A029FE1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{76B8DA74-E528-45A3-8EEB-8D9AF762F7B5}"
+      DTS:ObjectName="DestinationConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\AA\北風.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{665F2ED0-D77C-4D16-9D70-CB5EB9F66C33}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=MB-201-00;Initial Catalog=中文北風;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\準備 SQL 工作 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{E7A55148-5304-4A38-A0F9-DB34C1F883C9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="準備 SQL 工作 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{76B8DA74-E528-45A3-8EEB-8D9AF762F7B5}"
+          SQLTask:SqlStatementSource="CREATE TABLE `客戶` (&#xA;`客戶編號` LongText,&#xA;`公司名稱` LongText,&#xA;`連絡人` LongText,&#xA;`連絡人職稱` LongText,&#xA;`地址` LongText,&#xA;`城市` LongText,&#xA;`行政區` LongText,&#xA;`郵遞區號` LongText,&#xA;`國家地區` LongText,&#xA;`電話` LongText,&#xA;`傳真電話` LongText&#xA;)&#xA;GO&#xA;CREATE TABLE `訂貨主檔` (&#xA;`訂單號碼` Long,&#xA;`客戶編號` LongText,&#xA;`員工編號` Long,&#xA;`訂單日期` DateTime,&#xA;`要貨日期` DateTime,&#xA;`送貨日期` DateTime,&#xA;`送貨方式` Long,&#xA;`運費` Currency,&#xA;`收貨人` LongText,&#xA;`送貨地址` LongText,&#xA;`送貨城市` LongText,&#xA;`送貨行政區` LongText,&#xA;`送貨郵遞區號` LongText,&#xA;`送貨國家地區` LongText&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\資料流程工作 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{37A2DBFC-D5DA-4A38-BB95-EF2BB74EAAF6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="資料流程工作 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\資料流程工作 1\來源 - 客戶"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB 來源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;7"
+              description="OLE DB 來源"
+              name="來源 - 客戶"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">[dbo].[客戶]</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="包含要執行之 SQL 命令的變數。"
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定無法從資料來源取得字碼頁資訊時，要使用的資料行字碼頁。"
+                  name="DefaultCodePage">950</property>
+                <property
+                  dataType="System.Boolean"
+                  description="描述字元資料時，強制使用 DefaultCodePage 屬性值。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="SQL 命令中的參數和變數之間的對應。"
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\資料流程工作 1\來源 - 客戶.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出]"
+                  name="OLE DB 來源輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      length="5"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[公司名稱]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[公司名稱]"
+                      length="40"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[公司名稱]"
+                      name="公司名稱"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人]"
+                      length="30"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人]"
+                      name="連絡人"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人職稱]"
+                      length="30"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[地址]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[地址]"
+                      length="60"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[地址]"
+                      name="地址"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[城市]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[城市]"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[城市]"
+                      name="城市"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[行政區]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[行政區]"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[行政區]"
+                      name="行政區"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[郵遞區號]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[郵遞區號]"
+                      length="10"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[郵遞區號]"
+                      name="郵遞區號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[國家地區]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[國家地區]"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[國家地區]"
+                      name="國家地區"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[電話]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[電話]"
+                      length="24"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[電話]"
+                      name="電話"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[傳真電話]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[傳真電話]"
+                      length="24"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[傳真電話]"
+                      name="傳真電話"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[公司名稱]"
+                      dataType="wstr"
+                      length="40"
+                      name="公司名稱" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人]"
+                      dataType="wstr"
+                      length="30"
+                      name="連絡人" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人職稱]"
+                      dataType="wstr"
+                      length="30"
+                      name="連絡人職稱" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[地址]"
+                      dataType="wstr"
+                      length="60"
+                      name="地址" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[城市]"
+                      dataType="wstr"
+                      length="15"
+                      name="城市" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[行政區]"
+                      dataType="wstr"
+                      length="15"
+                      name="行政區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[郵遞區號]"
+                      dataType="wstr"
+                      length="10"
+                      name="郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[國家地區]"
+                      dataType="wstr"
+                      length="15"
+                      name="國家地區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[電話]"
+                      dataType="wstr"
+                      length="24"
+                      name="電話" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].ExternalColumns[傳真電話]"
+                      dataType="wstr"
+                      length="24"
+                      name="傳真電話" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出]"
+                  isErrorOut="true"
+                  name="OLE DB 來源錯誤輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      name="客戶編號" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[公司名稱]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[公司名稱]"
+                      name="公司名稱" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人]"
+                      name="連絡人" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人職稱]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[地址]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[地址]"
+                      name="地址" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[城市]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[城市]"
+                      name="城市" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[行政區]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[行政區]"
+                      name="行政區" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[郵遞區號]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[郵遞區號]"
+                      name="郵遞區號" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[國家地區]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[國家地區]"
+                      name="國家地區" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[電話]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[電話]"
+                      name="電話" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[傳真電話]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[傳真電話]"
+                      name="傳真電話" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\資料流程工作 1\來源 1 - 訂貨主檔"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB 來源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;7"
+              description="OLE DB 來源"
+              name="來源 1 - 訂貨主檔"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">[dbo].[訂貨主檔]</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="包含要執行之 SQL 命令的變數。"
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定無法從資料來源取得字碼頁資訊時，要使用的資料行字碼頁。"
+                  name="DefaultCodePage">950</property>
+                <property
+                  dataType="System.Boolean"
+                  description="描述字元資料時，強制使用 DefaultCodePage 屬性值。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="SQL 命令中的參數和變數之間的對應。"
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出]"
+                  name="OLE DB 來源輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[訂單號碼]"
+                      dataType="i4"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[訂單號碼]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[訂單號碼]"
+                      name="訂單號碼"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      length="5"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[員工編號]"
+                      dataType="i4"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[員工編號]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[員工編號]"
+                      name="員工編號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[訂單日期]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[訂單日期]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[訂單日期]"
+                      name="訂單日期"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[要貨日期]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[要貨日期]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[要貨日期]"
+                      name="要貨日期"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨日期]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨日期]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨日期]"
+                      name="送貨日期"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨方式]"
+                      dataType="i4"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨方式]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨方式]"
+                      name="送貨方式"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[運費]"
+                      dataType="cy"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[運費]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[運費]"
+                      name="運費"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[收貨人]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[收貨人]"
+                      length="40"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[收貨人]"
+                      name="收貨人"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨地址]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨地址]"
+                      length="60"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨地址]"
+                      name="送貨地址"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨城市]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨城市]"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨城市]"
+                      name="送貨城市"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨行政區]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨行政區]"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨行政區]"
+                      name="送貨行政區"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨郵遞區號]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨郵遞區號]"
+                      length="10"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨郵遞區號]"
+                      name="送貨郵遞區號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨國家地區]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨國家地區]"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨國家地區]"
+                      name="送貨國家地區"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[訂單號碼]"
+                      dataType="i4"
+                      name="訂單號碼" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[員工編號]"
+                      dataType="i4"
+                      name="員工編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[訂單日期]"
+                      dataType="dbTimeStamp"
+                      name="訂單日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[要貨日期]"
+                      dataType="dbTimeStamp"
+                      name="要貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨日期]"
+                      dataType="dbTimeStamp"
+                      name="送貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨方式]"
+                      dataType="i4"
+                      name="送貨方式" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[運費]"
+                      dataType="cy"
+                      name="運費" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[收貨人]"
+                      dataType="wstr"
+                      length="40"
+                      name="收貨人" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨地址]"
+                      dataType="wstr"
+                      length="60"
+                      name="送貨地址" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨城市]"
+                      dataType="wstr"
+                      length="15"
+                      name="送貨城市" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨行政區]"
+                      dataType="wstr"
+                      length="15"
+                      name="送貨行政區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨郵遞區號]"
+                      dataType="wstr"
+                      length="10"
+                      name="送貨郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].ExternalColumns[送貨國家地區]"
+                      dataType="wstr"
+                      length="15"
+                      name="送貨國家地區" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出]"
+                  isErrorOut="true"
+                  name="OLE DB 來源錯誤輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[訂單號碼]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[訂單號碼]"
+                      name="訂單號碼" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      name="客戶編號" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[員工編號]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[員工編號]"
+                      name="員工編號" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[訂單日期]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[訂單日期]"
+                      name="訂單日期" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[要貨日期]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[要貨日期]"
+                      name="要貨日期" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨日期]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨日期]"
+                      name="送貨日期" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨方式]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨方式]"
+                      name="送貨方式" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[運費]"
+                      dataType="cy"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[運費]"
+                      name="運費" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[收貨人]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[收貨人]"
+                      name="收貨人" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨地址]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨地址]"
+                      name="送貨地址" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨城市]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨城市]"
+                      name="送貨城市" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨行政區]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨行政區]"
+                      name="送貨行政區" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨郵遞區號]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨郵遞區號]"
+                      name="送貨郵遞區號" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨國家地區]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[送貨國家地區]"
+                      name="送貨國家地區" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\資料流程工作 1\目的地 - 客戶"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel 目的地;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;0"
+              description="Excel 目的地"
+              name="目的地 - 客戶"
+              usesDispositions="true"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">客戶</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出提供給識別欄位的值是否複製到目的地。如果為 False，則會在目的地自動產生識別欄位的值。只有在開啟快速載入時才會套用。"
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出包含 Null 之資料行的 Null 是否會插入目的地。若是 False，則包含 Null 的資料行的預設值會插入目的地。唯有開啟快速載入時才適用。"
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定快速載入使用的選項。只有開啟快速載入時才會套用。"
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定在資料插入期間發出認可的時間。值為 0 指定在資料插入結束時發出一次認可。只有開啟快速載入時才會套用。"
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\資料流程工作 1\目的地 - 客戶.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionExcel]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input]"
+                  errorOrTruncationOperation="插入"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[客戶編號]"
+                      cachedDataType="nText"
+                      cachedName="客戶編號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[客戶編號]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[公司名稱]"
+                      cachedDataType="nText"
+                      cachedName="公司名稱"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[公司名稱]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[公司名稱]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[連絡人]"
+                      cachedDataType="nText"
+                      cachedName="連絡人"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[連絡人]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[連絡人]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[連絡人職稱]"
+                      cachedDataType="nText"
+                      cachedName="連絡人職稱"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[連絡人職稱]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[連絡人職稱]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[地址]"
+                      cachedDataType="nText"
+                      cachedName="地址"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[地址]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[地址]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[城市]"
+                      cachedDataType="nText"
+                      cachedName="城市"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[城市]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[城市]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[行政區]"
+                      cachedDataType="nText"
+                      cachedName="行政區"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[行政區]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[行政區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[郵遞區號]"
+                      cachedDataType="nText"
+                      cachedName="郵遞區號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[郵遞區號]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[郵遞區號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[國家地區]"
+                      cachedDataType="nText"
+                      cachedName="國家地區"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[國家地區]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[國家地區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[電話]"
+                      cachedDataType="nText"
+                      cachedName="電話"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[電話]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[電話]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].Columns[傳真電話]"
+                      cachedDataType="nText"
+                      cachedName="傳真電話"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[傳真電話]"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[傳真電話]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[客戶編號]"
+                      dataType="nText"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[公司名稱]"
+                      dataType="nText"
+                      name="公司名稱" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[連絡人]"
+                      dataType="nText"
+                      name="連絡人" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[連絡人職稱]"
+                      dataType="nText"
+                      name="連絡人職稱" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[地址]"
+                      dataType="nText"
+                      name="地址" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[城市]"
+                      dataType="nText"
+                      name="城市" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[行政區]"
+                      dataType="nText"
+                      name="行政區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[郵遞區號]"
+                      dataType="nText"
+                      name="郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[國家地區]"
+                      dataType="nText"
+                      name="國家地區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[電話]"
+                      dataType="nText"
+                      name="電話" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input].ExternalColumns[傳真電話]"
+                      dataType="nText"
+                      name="傳真電話" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\目的地 - 客戶.Outputs[Excel 目的地錯誤輸出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel 目的地錯誤輸出"
+                  synchronousInputId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Outputs[Excel 目的地錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\目的地 - 客戶.Outputs[Excel 目的地錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\目的地 - 客戶.Outputs[Excel 目的地錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\目的地 - 客戶.Outputs[Excel 目的地錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel 目的地;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;0"
+              description="Excel 目的地"
+              name="目的地 1 - 訂貨主檔"
+              usesDispositions="true"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">訂貨主檔</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出提供給識別欄位的值是否複製到目的地。如果為 False，則會在目的地自動產生識別欄位的值。只有在開啟快速載入時才會套用。"
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出包含 Null 之資料行的 Null 是否會插入目的地。若是 False，則包含 Null 的資料行的預設值會插入目的地。唯有開啟快速載入時才適用。"
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定快速載入使用的選項。只有開啟快速載入時才會套用。"
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定在資料插入期間發出認可的時間。值為 0 指定在資料插入結束時發出一次認可。只有開啟快速載入時才會套用。"
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionExcel]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input]"
+                  errorOrTruncationOperation="插入"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[訂單號碼]"
+                      cachedDataType="i4"
+                      cachedName="訂單號碼"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[訂單號碼]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[訂單號碼]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[客戶編號]"
+                      cachedDataType="nText"
+                      cachedName="客戶編號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[客戶編號]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[員工編號]"
+                      cachedDataType="i4"
+                      cachedName="員工編號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[員工編號]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[員工編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[訂單日期]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="訂單日期"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[訂單日期]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[訂單日期]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[要貨日期]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="要貨日期"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[要貨日期]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[要貨日期]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨日期]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="送貨日期"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨日期]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨日期]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨方式]"
+                      cachedDataType="i4"
+                      cachedName="送貨方式"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨方式]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨方式]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[運費]"
+                      cachedDataType="cy"
+                      cachedName="運費"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[運費]"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[運費]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[收貨人]"
+                      cachedDataType="nText"
+                      cachedName="收貨人"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[收貨人]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[收貨人]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨地址]"
+                      cachedDataType="nText"
+                      cachedName="送貨地址"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨地址]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨地址]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨城市]"
+                      cachedDataType="nText"
+                      cachedName="送貨城市"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨城市]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨城市]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨行政區]"
+                      cachedDataType="nText"
+                      cachedName="送貨行政區"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨行政區]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨行政區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨郵遞區號]"
+                      cachedDataType="nText"
+                      cachedName="送貨郵遞區號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨郵遞區號]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨郵遞區號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].Columns[送貨國家地區]"
+                      cachedDataType="nText"
+                      cachedName="送貨國家地區"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨國家地區]"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨國家地區]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[訂單號碼]"
+                      dataType="i4"
+                      name="訂單號碼" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[客戶編號]"
+                      dataType="nText"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[員工編號]"
+                      dataType="i4"
+                      name="員工編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[訂單日期]"
+                      dataType="dbTimeStamp"
+                      name="訂單日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[要貨日期]"
+                      dataType="dbTimeStamp"
+                      name="要貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨日期]"
+                      dataType="dbTimeStamp"
+                      name="送貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨方式]"
+                      dataType="i4"
+                      name="送貨方式" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[運費]"
+                      dataType="cy"
+                      name="運費" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[收貨人]"
+                      dataType="nText"
+                      name="收貨人" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨地址]"
+                      dataType="nText"
+                      name="送貨地址" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨城市]"
+                      dataType="nText"
+                      name="送貨城市" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨行政區]"
+                      dataType="nText"
+                      name="送貨行政區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨郵遞區號]"
+                      dataType="nText"
+                      name="送貨郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input].ExternalColumns[送貨國家地區]"
+                      dataType="nText"
+                      name="送貨國家地區" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Outputs[Excel 目的地錯誤輸出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel 目的地錯誤輸出"
+                  synchronousInputId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Outputs[Excel 目的地錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Outputs[Excel 目的地錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Outputs[Excel 目的地錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Outputs[Excel 目的地錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\資料流程工作 1\資料轉換 0 - 0"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="資料轉換;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;0"
+              description="資料轉換"
+              name="資料轉換 0 - 0"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入]"
+                  name="資料轉換輸入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[客戶編號]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="客戶編號"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[公司名稱]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="公司名稱"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[公司名稱]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[連絡人]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="連絡人"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[連絡人職稱]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="連絡人職稱"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[地址]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="地址"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[地址]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[城市]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="城市"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[城市]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[行政區]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="行政區"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[行政區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[郵遞區號]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="郵遞區號"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[郵遞區號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[國家地區]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="國家地區"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[國家地區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[電話]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="電話"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[電話]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入].Columns[傳真電話]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="傳真電話"
+                      lineageId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[傳真電話]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出]"
+                  exclusionGroup="1"
+                  name="資料轉換輸出"
+                  synchronousInputId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[客戶編號]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[客戶編號]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[公司名稱]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[公司名稱]"
+                      name="公司名稱"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[公司名稱]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[連絡人]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[連絡人]"
+                      name="連絡人"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[連絡人職稱]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[地址]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[地址]"
+                      name="地址"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[地址]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[城市]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[城市]"
+                      name="城市"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[城市]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[行政區]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[行政區]"
+                      name="行政區"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[行政區]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[郵遞區號]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[郵遞區號]"
+                      name="郵遞區號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[郵遞區號]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[國家地區]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[國家地區]"
+                      name="國家地區"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[國家地區]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[電話]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[電話]"
+                      name="電話"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[電話]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[傳真電話]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出].Columns[傳真電話]"
+                      name="傳真電話"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出].Columns[傳真電話]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換錯誤輸出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="資料轉換錯誤輸出"
+                  synchronousInputId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\資料流程工作 1\資料轉換 1 - 0"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="資料轉換;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;0"
+              description="資料轉換"
+              name="資料轉換 1 - 0"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入]"
+                  name="資料轉換輸入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[客戶編號]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="客戶編號"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[收貨人]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="收貨人"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[收貨人]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[送貨地址]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="送貨地址"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨地址]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[送貨城市]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="送貨城市"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨城市]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[送貨行政區]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="送貨行政區"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨行政區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[送貨郵遞區號]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="送貨郵遞區號"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨郵遞區號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入].Columns[送貨國家地區]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="送貨國家地區"
+                      lineageId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨國家地區]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出]"
+                  exclusionGroup="1"
+                  name="資料轉換輸出"
+                  synchronousInputId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[客戶編號]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[客戶編號]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[收貨人]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[收貨人]"
+                      name="收貨人"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[收貨人]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨地址]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨地址]"
+                      name="送貨地址"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨地址]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨城市]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨城市]"
+                      name="送貨城市"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨城市]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨行政區]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨行政區]"
+                      name="送貨行政區"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨行政區]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨郵遞區號]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨郵遞區號]"
+                      name="送貨郵遞區號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨郵遞區號]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨國家地區]"
+                      dataType="nText"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出].Columns[送貨國家地區]"
+                      name="送貨國家地區"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="指定作為轉換之資料來源的輸入資料行。"
+                          name="SourceInputColumnLineageID">#{Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出].Columns[送貨國家地區]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換錯誤輸出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="資料轉換錯誤輸出"
+                  synchronousInputId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\資料流程工作 1.Paths[OLE DB 來源輸出]"
+              endId="Package\資料流程工作 1\資料轉換 0 - 0.Inputs[資料轉換輸入]"
+              name="OLE DB 來源輸出"
+              startId="Package\資料流程工作 1\來源 - 客戶.Outputs[OLE DB 來源輸出]" />
+            <path
+              refId="Package\資料流程工作 1.Paths[OLE DB 來源輸出1]"
+              endId="Package\資料流程工作 1\資料轉換 1 - 0.Inputs[資料轉換輸入]"
+              name="OLE DB 來源輸出"
+              startId="Package\資料流程工作 1\來源 1 - 訂貨主檔.Outputs[OLE DB 來源輸出]" />
+            <path
+              refId="Package\資料流程工作 1.Paths[資料轉換輸出]"
+              endId="Package\資料流程工作 1\目的地 - 客戶.Inputs[Destination Input]"
+              name="資料轉換輸出"
+              startId="Package\資料流程工作 1\資料轉換 0 - 0.Outputs[資料轉換輸出]" />
+            <path
+              refId="Package\資料流程工作 1.Paths[資料轉換輸出1]"
+              endId="Package\資料流程工作 1\目的地 1 - 訂貨主檔.Inputs[Destination Input]"
+              name="資料轉換輸出"
+              startId="Package\資料流程工作 1\資料轉換 1 - 0.Outputs[資料轉換輸出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{80AA4EF6-2341-4453-9131-293DDEA12760\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{80AA4EF6-2341-4453-9131-293DDEA12760}"
+      DTS:From="Package\準備 SQL 工作 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{80AA4EF6-2341-4453-9131-293DDEA12760}"
+      DTS:To="Package\資料流程工作 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

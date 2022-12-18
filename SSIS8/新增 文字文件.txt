@@ -1,0 +1,9 @@
+CREATE TABLE `客戶` (
+    `客戶編號` LongText,
+    `公司名稱` LongText,
+    `連絡人` LongText,
+    `連絡人職稱` LongText,
+    `地址` LongText,
+    `城市` LongText,
+    `傳真電話` LongText
+)

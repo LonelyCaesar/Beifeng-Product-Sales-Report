@@ -1,0 +1,40 @@
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY [六都] ON ROWS
+FROM [中文北風Cube]
+WHERE [時間].[年].[2003年];
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY EXCEPT([訂貨主檔].[送貨城市].MEMBERS,[六都]) ON ROWS
+FROM [中文北風Cube]
+WHERE [時間].[年].[2003年];
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY {[訂貨主檔].[送貨城市].MEMBERS-[六都]-[訂貨主檔].[送貨城市].[All]} ON ROWS
+FROM [中文北風Cube]
+WHERE [時間].[年].[2003年];
+
+
+--各縣市 各產品類 2003年 營收
+--各縣市 各產品類 個年度 營收
+
+--() 小括號，交集
+SELECT NON EMPTY {[產品資料].[類別編號].MEMBERS-[產品資料].[類別編號].[All]} ON COLUMNS
+    , NON EMPTY {[訂貨主檔].[送貨城市].MEMBERS-[訂貨主檔].[送貨城市].[All]} ON ROWS
+FROM [中文北風Cube]
+WHERE ([時間].[年].[2003年],[Measures].[金額]);
+
+SELECT NON EMPTY CROSSJOIN([時間].[年].MEMBERS,[產品資料].[類別編號].MEMBERS) ON COLUMNS
+    , NON EMPTY {[訂貨主檔].[送貨城市].MEMBERS-[訂貨主檔].[送貨城市].[All]} ON ROWS
+FROM [中文北風Cube]
+WHERE [Measures].[金額];
+
+SELECT NON EMPTY [時間].[年].MEMBERS * [產品資料].[類別編號].MEMBERS ON COLUMNS
+    , NON EMPTY {[訂貨主檔].[送貨城市].MEMBERS-[訂貨主檔].[送貨城市].[All]} ON ROWS
+FROM [中文北風Cube]
+WHERE [Measures].[金額];  
+
+SELECT NON EMPTY {[時間].[年].MEMBERS-[時間].[年].[All]} * 
+                 {[產品資料].[類別編號].MEMBERS-[產品資料].[類別編號].[All]} ON COLUMNS
+	, NON EMPTY  {[訂貨主檔].[送貨城市].MEMBERS-[訂貨主檔].[送貨城市].[All]} ON ROWS
+FROM [中文北風Cube]
+WHERE [Measures].[金額];

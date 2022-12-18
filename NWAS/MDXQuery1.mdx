@@ -1,0 +1,38 @@
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY { [時間].[月].&[2003-01-01T00:00:00] : [時間].[月].&[2003-12-01T00:00:00] } ON ROWS
+FROM [中文北風Cube]
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY { [時間].[月].[2003年 1月] : [時間].[月].[2003年 12月] } ON ROWS
+FROM [中文北風Cube]
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY [時間].[年中的月份].MEMBERS ON ROWS
+FROM [中文北風Cube]
+WHERE [時間].[年].[2003年]
+
+--------------------------------------------
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY [訂貨主檔].[送貨城市].MEMBERS ON ROWS
+FROM [中文北風Cube]
+WHERE [時間].[年].[2003年]
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY {[訂貨主檔].[送貨城市].&[台北市],[訂貨主檔].[送貨城市].&[台北縣]
+	, [訂貨主檔].[送貨城市].&[桃園縣],[訂貨主檔].[送貨城市].&[台中市]
+    , [訂貨主檔].[送貨城市].&[高雄市]} ON ROWS
+FROM [中文北風Cube]
+
+---命名集---
+WITH SET [六都]
+AS { [訂貨主檔].[送貨城市].&[台北市]
+    ,[訂貨主檔].[送貨城市].&[台北縣]
+	,[訂貨主檔].[送貨城市].&[桃園縣]
+	,[訂貨主檔].[送貨城市].&[台中市]
+	,[訂貨主檔].[送貨城市].&[高雄市] }
+
+SELECT NON EMPTY [Measures].[金額] ON COLUMNS
+    , NON EMPTY [六都] ON ROWS
+FROM [中文北風Cube]
+WHERE [時間].[年].[2003年];

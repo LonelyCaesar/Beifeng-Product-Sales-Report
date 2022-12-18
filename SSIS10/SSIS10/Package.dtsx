@@ -1,0 +1,631 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/22/2022 7:39:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-0VBSIAN5"
+  DTS:CreatorName="LAPTOP-0VBSIAN5\hello"
+  DTS:DTSID="{36467B10-DFC7-4C38-A8A7-242C1C813A20}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.694.0"
+  DTS:LocaleID="1028"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{AE76A7A4-D833-45D4-BFEC-B7BBA5628BF5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E92DBD6D-AF2E-4D3B-AF4C-2052DA1B3195}"
+      DTS:ObjectName="LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-0VBSIAN5\MSSQLSERVER01;Initial Catalog=中文北風;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{E92DBD6D-AF2E-4D3B-AF4C-2052DA1B3195}LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP 連接管理員]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{5B341729-0ADC-4EF9-8CF9-B4CF51D8AA53}"
+      DTS:ObjectName="SMTP 連接管理員">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=ms33.hinet.net;UseWindowsAuthentication=False;EnableSsl=False;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{11AE3825-1BC4-42C0-8432-6D4DCAA6480E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CCompanyName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9BC9C21E-9A09-40C5-A4FD-FC78EAD6F636}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CEmail">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D0597306-C494-4622-9204-E650B7738BEC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4844CDB4-0E8A-4AAE-B05B-1657FCAC4B34}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CPerson">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{09C90415-A564-4FBB-8E71-78885097722E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CPersonJob">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{340DFF99-D03E-43F6-9F31-281651D32474}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CustomerData">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach 迴圈容器"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach 迴圈容器"
+      DTS:DTSID="{4200a15b-6f2d-4f98-9125-c9781a6c8ccb}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach 迴圈容器">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{2eed8e8f-8f0d-4726-af0a-d5dd0fffcc04}"
+        DTS:ObjectName="{6A353328-5789-4785-B3F8-604DC983FA05}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::CustomerData" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach 迴圈容器\傳送郵件工作"
+          DTS:CreationName="Microsoft.SendMailTask"
+          DTS:DelayValidation="True"
+          DTS:Description="傳送郵件工作"
+          DTS:DTSID="{acbbdf65-d165-41f8-a42a-fff782901ecc}"
+          DTS:ExecutableType="Microsoft.SendMailTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="傳送郵件工作"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">@[User::CID] +"  "+ @[User::CCompanyName] +"\n"+
+"親愛的 "+ @[User::CPerson] +" "+ @[User::CPersonJob]  +" 您好：\n"+
+"本公司跳樓大拍賣！\n"+
+"請快來搶購！\n\n\n巨匠公司 敬上"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[User::CEmail]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{5B341729-0ADC-4EF9-8CF9-B4CF51D8AA53}"
+              SendMailTask:From="sql995@gmail.com"
+              SendMailTask:Subject="SSIS測試信"
+              SendMailTask:MessageSource="  &#xA;親愛的   您好：&#xA;本公司跳樓大拍賣！&#xA;請快來搶購！&#xA;&#xA;&#xA;巨匠公司 敬上" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{8E0A2E22-DCBA-44E8-BECD-B1C322CC540B}"
+          DTS:ObjectName="{8E0A2E22-DCBA-44E8-BECD-B1C322CC540B}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::CID" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{7DCE7F66-B8A0-4C8F-8552-5AA8674FDDF0}"
+          DTS:ObjectName="{7DCE7F66-B8A0-4C8F-8552-5AA8674FDDF0}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::CCompanyName" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{51C33B01-1DEB-485E-A36F-F1AED854E06B}"
+          DTS:ObjectName="{51C33B01-1DEB-485E-A36F-F1AED854E06B}"
+          DTS:ValueIndex="2"
+          DTS:VariableName="User::CPerson" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{B57F3B90-A211-4A2A-9DD8-D2FFDE4DCBC2}"
+          DTS:ObjectName="{B57F3B90-A211-4A2A-9DD8-D2FFDE4DCBC2}"
+          DTS:ValueIndex="3"
+          DTS:VariableName="User::CPersonJob" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{9E412F5A-3AE0-40FA-8E57-801EFEB4783D}"
+          DTS:ObjectName="{9E412F5A-3AE0-40FA-8E57-801EFEB4783D}"
+          DTS:ValueIndex="5"
+          DTS:VariableName="User::CEmail" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\撈取EDM客戶資料"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="資料流程工作"
+      DTS:DTSID="{C3CC135E-0E01-41FF-B236-55A27CFA76F3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="撈取EDM客戶資料"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\撈取EDM客戶資料\OLE DB 來源"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB 來源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;7"
+              description="OLE DB 來源"
+              name="OLE DB 來源"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">[dbo].[EDM客戶]</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="包含要執行之 SQL 命令的變數。"
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定無法從資料來源取得字碼頁資訊時，要使用的資料行字碼頁。"
+                  name="DefaultCodePage">950</property>
+                <property
+                  dataType="System.Boolean"
+                  description="描述字元資料時，強制使用 DefaultCodePage 屬性值。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="SQL 命令中的參數和變數之間的對應。"
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\撈取EDM客戶資料\OLE DB 來源.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出]"
+                  name="OLE DB 來源輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      length="5"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[公司名稱]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[公司名稱]"
+                      length="40"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[公司名稱]"
+                      name="公司名稱"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人]"
+                      length="30"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人]"
+                      name="連絡人"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人職稱]"
+                      length="30"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[電話]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[電話]"
+                      length="24"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[電話]"
+                      name="電話"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[電子郵件]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[電子郵件]"
+                      length="50"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[電子郵件]"
+                      name="電子郵件"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[公司名稱]"
+                      dataType="wstr"
+                      length="40"
+                      name="公司名稱" />
+                    <externalMetadataColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人]"
+                      dataType="wstr"
+                      length="30"
+                      name="連絡人" />
+                    <externalMetadataColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人職稱]"
+                      dataType="wstr"
+                      length="30"
+                      name="連絡人職稱" />
+                    <externalMetadataColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[電話]"
+                      dataType="wstr"
+                      length="24"
+                      name="電話" />
+                    <externalMetadataColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[電子郵件]"
+                      dataType="wstr"
+                      length="50"
+                      name="電子郵件" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出]"
+                  isErrorOut="true"
+                  name="OLE DB 來源錯誤輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      name="客戶編號" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[公司名稱]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[公司名稱]"
+                      name="公司名稱" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人]"
+                      name="連絡人" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人職稱]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[電話]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[電話]"
+                      name="電話" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[電子郵件]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[電子郵件]"
+                      name="電子郵件" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\撈取EDM客戶資料\資料錄集目的地"
+              componentClassID="Microsoft.RecordsetDestination"
+              contactInfo="資料錄集目的地;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;0"
+              description="建立並擴展可在此資料流程外部使用的記憶體中 ADO 資料錄集。指令碼和其他封裝元素可以使用此資料錄集。例如使用資料錄集來儲存要載入資料倉儲中的檔案名稱。"
+              name="資料錄集目的地">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定包含資料錄集的變數。"
+                  name="VariableName">User::CustomerData</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入]"
+                  hasSideEffects="true"
+                  name="資料錄集目的地輸入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入].Columns[客戶編號]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="客戶編號"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入].Columns[公司名稱]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="公司名稱"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[公司名稱]" />
+                    <inputColumn
+                      refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入].Columns[連絡人]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="連絡人"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人]" />
+                    <inputColumn
+                      refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入].Columns[連絡人職稱]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="連絡人職稱"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]" />
+                    <inputColumn
+                      refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入].Columns[電話]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="電話"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[電話]" />
+                    <inputColumn
+                      refId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入].Columns[電子郵件]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="電子郵件"
+                      lineageId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[電子郵件]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\撈取EDM客戶資料.Paths[OLE DB 來源輸出]"
+              endId="Package\撈取EDM客戶資料\資料錄集目的地.Inputs[資料錄集目的地輸入]"
+              name="OLE DB 來源輸出"
+              startId="Package\撈取EDM客戶資料\OLE DB 來源.Outputs[OLE DB 來源輸出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D76FF4A-CDDD-49FC-96C6-FCEB0760F7E2}"
+      DTS:From="Package\撈取EDM客戶資料"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach 迴圈容器" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\撈取EDM客戶資料"
+          TopLeft="249.285718531025,86.4117659177747" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Foreach 迴圈容器\傳送郵件工作"
+          TopLeft="47.1666517986197,43.7142715770378" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256,164.8"
+          Size="256,208"
+          Id="Package\Foreach 迴圈容器"
+          TopLeft="227.857146737527,195.000002734801" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="337.685718531025,128.011765917775">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.1714282065022,66.9882368170267"
+              Start="0,0"
+              End="18.1714282065022,59.4882368170267">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.4941184085134" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.4941184085134"
+                    Point2="0,33.4941184085134"
+                    Point3="4,33.4941184085134" />
+                  <mssgle:LineSegment
+                    End="14.1714282065022,33.4941184085134" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.1714282065022,33.4941184085134"
+                    Point2="18.1714282065022,33.4941184085134"
+                    Point3="18.1714282065022,37.4941184085134" />
+                  <mssgle:LineSegment
+                    End="18.1714282065022,59.4882368170267" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\撈取EDM客戶資料">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\撈取EDM客戶資料\OLE DB 來源"
+          TopLeft="256.428575795524,58.8823537669793" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\撈取EDM客戶資料\資料錄集目的地"
+          TopLeft="228.571432463977,173.588237728627" />
+        <EdgeLayout
+          Id="Package\撈取EDM客戶資料.Paths[OLE DB 來源輸出]"
+          TopLeft="331.228575795524,100.482353766979">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.4571433315472,73.1058839616479"
+              Start="0,0"
+              End="-21.4571433315472,65.6058839616479">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5529419808239" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5529419808239"
+                    Point2="0,36.5529419808239"
+                    Point3="-4,36.5529419808239" />
+                  <mssgle:LineSegment
+                    End="-17.4571433315472,36.5529419808239" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.4571433315472,36.5529419808239"
+                    Point2="-21.4571433315472,36.5529419808239"
+                    Point3="-21.4571433315472,40.5529419808239" />
+                  <mssgle:LineSegment
+                    End="-21.4571433315472,65.6058839616479" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\撈取EDM客戶資料\OLE DB 來源">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,352 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="353b1c9c-6a33-47df-98c8-775e72941a6d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>時間</ID>
+  <Name>時間</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-584" scrolltop="-3331" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="4847" y="12827" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001905f0100144d6963726f736f66742053616e73205365726966" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="時間" left="-65" top="868" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3323" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000fb0c000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_時間" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-584</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3331</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-65</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>868</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="77c73faa-0a7b-49cc-853f-74c97e6de434">
+    <DataSourceViewID>中文北風資料檢視</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="6b191dd9-8975-461c-bc43-e505a21b274c">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="d40c207f-50a0-4eb3-91b5-6151abcf569b">
+      <ID>PK 日期</ID>
+      <Name>PK 日期</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b7474a72-49bc-4674-9922-c71e4b8052ac">
+          <DataType>Date</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="85aeadd1-d35c-4602-9849-05e38e0af185">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>PK_日期</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="628a2e18-4682-4e52-883c-dae338de05b3">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="83f5eeba-bf4f-4e4b-a14f-48c067a7a504">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>日期_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="a33aa45c-251e-4681-810e-844bb34dfac5">
+          <AttributeID>月</AttributeID>
+          <Name>月</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="18484aa9-c2d5-4ca7-9f22-1768a0b7c4c8">
+          <AttributeID>年</AttributeID>
+          <Name>年</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a92b65ec-8f1d-41e7-a9cc-2a4cb6e82886">
+          <AttributeID>年中的月份</AttributeID>
+          <Name>年中的月份</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5ae1557e-87dd-41e2-82bf-da09fc059c8b">
+          <AttributeID>年中的季度</AttributeID>
+          <Name>年中的季度</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d29665b0-f3da-468c-9645-dadca163dae3">
+          <AttributeID>季</AttributeID>
+          <Name>季</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1930c590-45ce-47a0-8458-219e4a14bd7d">
+          <AttributeID>月中的日</AttributeID>
+          <Name>月中的日</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="39d7e2eb-3568-40cd-bc19-f02251476351">
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="060077e4-8526-46c7-9fe0-67634544c01d">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>PK_日期</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="698196d2-df83-42ed-ae57-0202bf2fc129">
+      <ID>月</ID>
+      <Name>月</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e08fe238-3131-43be-8bd4-041c2e17923d">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2edf534d-dd5b-4d62-8cfc-8183d73d1c67">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>月</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="64657132-851e-4e87-901d-f70ca2fa0cf8">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7bc200e5-827b-4cd5-83b1-6dcbac1866a0">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>月_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="a10e412f-70e6-4930-b235-c23fe0814832">
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f8c63c18-584b-4ece-aec6-e3e4e9bbf9a8">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>月</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d55133e2-77ba-4b4e-a62f-dbdf2539a339">
+      <ID>年</ID>
+      <Name>年</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d05c4983-bc46-421f-8ed8-757e89b933a5">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9bba4460-6f6d-4905-b0e2-9a1597fb7016">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>年</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="deef4d05-5c81-40a0-a598-066527d34ae6">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="544b3910-0979-419e-aff3-50decb7f3436">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>年_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="2d2e5d9c-26a1-4721-8bdb-43dfb3da2c48">
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="143d599a-de9a-4399-8f56-9e766c95e50e">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>年</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="230a7e1e-6497-4490-8eba-3bb3ce680e80">
+      <ID>年中的月份</ID>
+      <Name>年中的月份</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="289afda4-5ee0-449c-bdf9-5e63e156fd86">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5958b6e6-c2cb-442c-82f4-ab9c23548d32">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>年中的月份</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c39a9d2c-7fc5-4ef3-b7ed-583ed97f1d1a">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c930d6fb-f36a-45d7-a68d-47afc010971b">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>年中的月份_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="5258f2a6-2d85-45ab-a21e-51c0189de21a">
+        <DataType>Integer</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0b537cf5-0aaa-4b1d-8701-727cd5fe64ad">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>年中的月份</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f160c030-784f-4bc9-b8ce-1c10148db855">
+      <ID>年中的季度</ID>
+      <Name>年中的季度</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7378eebd-af8d-40cc-9457-cacc37d94deb">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="28c2b28a-be8f-416f-b032-6bec8a36be62">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>年中的季度</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a5872d82-7d7b-4b8f-bf9d-2c07ac1f5814">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3f685520-85bc-4cba-b151-861e3c787537">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>年中的季度_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="9f6c9053-f24d-41ea-a2f0-64b76d02d0c7">
+        <DataType>Integer</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1fa0e89d-da93-406a-8e54-3efa7c5588c4">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>年中的季度</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c1bdc546-7f90-45e3-a1f3-5113623cfa1c">
+      <ID>季</ID>
+      <Name>季</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cdb71156-c3f7-453b-a353-9a7a824138c8">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="87fbe4d5-40d6-4a77-8b21-307025c531ae">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>季</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="3a647d20-769f-4443-ba87-60d829bc3c4b">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cc98e351-4189-4e7a-be5e-c1b60c3edf6c">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>季_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="39c55333-6846-46cc-b7c2-36c3f4b0380a">
+        <DataType>Date</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1f500708-35f9-4785-b17a-31f1a3303cd0">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>季</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0c4e82f0-007f-47a3-9a31-76c85124da2e">
+      <ID>月中的日</ID>
+      <Name>月中的日</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="47f96478-828a-4c7f-a9d6-de91baca00ca">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8f02ff5e-89b1-4d22-9e4c-09f4147ad6c5">
+            <TableID>dbo_時間</TableID>
+            <ColumnID>月中的日</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="222e2c46-ba4a-419a-8474-987caffb665d">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cfcd806d-7aac-45d3-969a-ddb727ba7d25">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>月中的日_名稱</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="9b61f7fe-41ef-4601-90dd-1d24544f11f1">
+        <DataType>Integer</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9f0bd13b-4979-453a-838c-da1f7b851205">
+          <TableID>dbo_時間</TableID>
+          <ColumnID>月中的日</ColumnID>
+        </Source>
+      </ValueColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="e658b1a0-37a5-45b7-9da0-b500f9584a2b">
+      <ID>階層</ID>
+      <Name>日期階層</Name>
+      <Levels>
+        <Level dwd:design-time-name="d80336ec-6164-41cd-95ad-9980b2ca695c">
+          <ID>年</ID>
+          <Name>年</Name>
+          <SourceAttributeID>年</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="96171b42-085a-4313-8cbc-fdc911308573">
+          <ID>年中的季度</ID>
+          <Name>年中的季度</Name>
+          <SourceAttributeID>年中的季度</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="965d84f2-a29a-43fa-bdd2-46c77c9ceb98">
+          <ID>年中的月份</ID>
+          <Name>年中的月份</Name>
+          <SourceAttributeID>年中的月份</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

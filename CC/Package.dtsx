@@ -1,0 +1,1363 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/20/2022 8:29:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-0VBSIAN5"
+  DTS:CreatorName="LAPTOP-0VBSIAN5\hello"
+  DTS:DTSID="{7735B2E4-268B-4131-A384-D4A62C5BD762}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.694.0"
+  DTS:LocaleID="1028"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{8D185F27-403E-4BB7-BEFA-19F249E6B88E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{06E0E19B-682C-4276-907E-CB6AF0506878}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::FileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EC40B561-24DB-4DA5-8A89-D9C998E94C1C}"
+      DTS:ObjectName="LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-0VBSIAN5\MSSQLSERVER01;Initial Catalog=中文北風;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{EC40B561-24DB-4DA5-8A89-D9C998E94C1C}LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{77DF9A0C-22CF-4DB3-8058-87ECE13D8CCA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\動態建立Excel檔並建立目標Sheet"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="執行 SQL 工作"
+      DTS:DTSID="{3586981D-0659-435A-B8A3-0193B7A9974F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="動態建立Excel檔並建立目標Sheet"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C3859536-4C71-4D48-9DDB-7FB6332CDB6D}"
+          SQLTask:SqlStatementSource="CREATE TABLE `客戶` (&#xA;    `客戶編號` LongText,&#xA;    `公司名稱` LongText,&#xA;    `連絡人` LongText,&#xA;    `連絡人職稱` LongText,&#xA;    `地址` LongText,&#xA;    `城市` LongText,&#xA;    `傳真電話` LongText&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\動態產生Excel檔名"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="指令碼工作"
+      DTS:DTSID="{629085A8-23A0-4B51-9E2F-902CC334B45C}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="動態產生Excel檔名"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_5abaca120f1d481792146f04240ce8c8"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadWriteVariables="User::FileName">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+#endregion
+
+namespace ST_5abaca120f1d481792146f04240ce8c8
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // TODO: Add your code here
+
+            string aa = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            Dts.Variables["FileName"].Value = @"C:\CC\�_���Ȥ�_" + aa + ".xls";
+            
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_5abaca120f1d481792146f04240ce8c8.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{fa49f7f2-048e-48d7-a90d-5524af5bfe03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_5abaca120f1d481792146f04240ce8c8</RootNamespace>
+    <AssemblyName>ST_5abaca120f1d481792146f04240ce8c8</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+         <Generator>ResXFileCodeGenerator</Generator>
+         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+             <AutoGen>True</AutoGen>
+         <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+         <Generator>SettingsSingleFileGenerator</Generator>
+         <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+         <AutoGen>True</AutoGen>
+         <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+         <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask"
+                           HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}"
+                           ApplicationType="usd"
+                           Language="cs"
+                           TemplatesPath=""
+                           DebugInfoCommandLine=""
+                           DebugInfoWorkingDir=""
+                           IconImageList=""/>
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex="">
+        </Host>
+        <ProjectClient>
+            <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:Language>msBuild</msb:Language>
+    <msb:CodeName>ST_5abaca120f1d481792146f04240ce8c8</msb:CodeName>
+    <msb:DisplayName>ST_5abaca120f1d481792146f04240ce8c8</msb:DisplayName>
+    <msb:ProjectId>{E069403D-FC6C-440D-9D2E-44A084FCE6FA}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_5abaca120f1d481792146f04240ce8c8.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5abaca120f1d481792146f04240ce8c8.Properties.Settings.get_Default():ST_5abaca120f1d481792146f04240ce8c8.Properties.Sett" +
+    "ings")]
+
+namespace ST_5abaca120f1d481792146f04240ce8c8.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_5abaca120f1d481792146f04240ce8c8")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_5abaca120f1d481792146f04240ce8c8")]
+[assembly: AssemblyCopyright("Copyright @  2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5abaca120f1d481792146f04240ce8c8.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5abaca120f1d481792146f04240ce8c8.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_5abaca120f1d481792146f04240ce8c8.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_5abaca120f1d481792146f04240ce8c8.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_5abaca120f1d481792146f04240ce8c8.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_5abaca120f1d481792146f04240ce8c8.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDALkhemMAAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAFi4A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMQtAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAHA4AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD4
+LQAAAAAAAEgAAAACAAUADCEAAAAMAAABAAAAAAAAAAwtAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBABKAAAAAQAAESgQAAAKCxIBcgEAAHAoEQAACgoCKBIA
+AApvEwAACnIhAABwbxQAAApyMwAAcAZySwAAcCgVAAAKbxYAAAoCKBIAAAoWbxcAAAoqHgIoGAAA
+CioeAigZAAAKKq5+AQAABC0eclUAAHDQAwAAAigaAAAKbxsAAApzHAAACoABAAAEfgEAAAQqGn4C
+AAAEKh4CgAIAAAQqGn4DAAAEKh4CKB0AAAoqLnMIAAAGgAMAAAQqQlNKQgEAAQAAAAAADAAAAHY0
+LjAuMzAzMTkAAAAABQBsAAAA1AMAACN+AABABAAAdAUAACNTdHJpbmdzAAAAALQJAADIAAAAI1VT
+AHwKAAAQAAAAI0dVSUQAAACMCgAAdAEAACNCbG9iAAAAAAAAAAIAAAFXHaIBCQMAAAD6ATMAFgAA
+AQAAAB8AAAAFAAAABgAAAAkAAAABAAAAHQAAAAIAAAAQAAAAAQAAAAIAAAADAAAABAAAAAEAAAAE
+AAAAAQAAAAEAAAAAAH4DAQAAAAAABgAuAk4EBgC9Ak4EBgB6ATsEDwDCBAAABgCnAfwDBgARAvwD
+BgDyAfwDBgCkAvwDBgBOAvwDBgBnAvwDBgC+AfwDBgDZAesCCgCCAi0DCgD5AC0DBgCbAK8DBgC2
+A68DBgBdATsEBgA8Ba8DBgAeBG4EBgAOBOcDDgAtAWgDDgCOAWgDDgAVAdIDBgBCAU4ECgBWAy0D
+EgAEBaQAEgBuAKQABgAHA68DBgDEAK8DBgB3AK8DBgBqBfwDAAAAACUAAAAAAAEAAQABABAAxwMB
+ADkAAQABAAAAEAB1BNEESQABAAMAAAEQAA4F0QRdAAMABwADAQAAJwUAAEEABAAKABEAuwN2ABEA
+6QB6ABEAXgB+AAYGTQCCAFaAFwWFAFaAyQCFAFAgAAAAAIYAzQMGAAEApiAAAAAAhhguBAYAAQCu
+IAAAAACDGC4EBgABALYgAAAAAJMIGgSJAAEA4iAAAAAAkwjRAI4AAQDpIAAAAACTCN0AkwABAPEg
+AAAAAJYIQwWZAAIA+CAAAAAAhhguBAYAAgAAIQAAAACRGDQEngACAAAAAQDlAgkALgQBABEALgQG
+ABkALgQKACkALgQQADEALgQQADkALgQQAEEALgQQAEkALgQQAFEALgQQAFkALgQQAGEALgQQAGkA
+LgQGAIkALgQGALEALgQVAMEALgQGAHkAXgUhAHkABQMmAHEAHwUrAMkAAAUwANEApgM1AOEANQU7
+ANkA2wJCAMkATwUBAHEALgQGAJEALgQGAOkAiQBHAOkAZgVOAJkALgRTALkALgQGAAgAFABsAAgA
+GABxACkAcwDZAC4ACwCxAC4AEwC6AC4AGwDZAC4AIwDiAC4AKwALAS4AMwALAS4AOwALAS4AQwDi
+AC4ASwARAS4AUwALAS4AWwAoAUMAYwBxAEkAcwDZAGEAewBxAGMAawBxABsAAwABAAQAAwAAAB4E
+ogAAAPEApwAAAEcFrAACAAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAAAKcgHJIAAAAAAAAB
+AAAABAAAAAAAAAAAAAAAWgBVAAAAAAAPAAAAAAAAAAAAAABjAA4DAAAAAAQAAAAAAAAAAAAAAFoA
+rwMAAAAADwAAAAAAAAAAAAAAYwAuAAAAAAAAAAAAAQAAAH8EAAAFAAIAAAAAU1RfNWFiYWNhMTIw
+ZjFkNDgxNzkyMTQ2ZjA0MjQwY2U4YzgAPE1vZHVsZT4ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5h
+Z2VkRFRTAHZhbHVlX18AbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAFZhcmlhYmxlAFJ1bnRpbWVU
+eXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAERhdGVUaW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+RHRzLlJ1bnRpbWUAVHlwZQBGYWlsdXJlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNl
+Q3VsdHVyZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UAQXBwbGljYXRpb25TZXR0aW5nc0Jh
+c2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdn
+ZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJs
+ZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmli
+dXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1
+dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0
+cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0
+ZQBTU0lTU2NyaXB0VGFza0VudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmli
+dXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAHNldF9WYWx1ZQB2YWx1ZQBTeXN0ZW0u
+UnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFz
+awBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1v
+ZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABTVF81YWJhY2ExMjBmMWQ0ODE3OTIxNDZmMDQyNDBj
+ZThjOC5kbGwAZ2V0X0l0ZW0AU3lzdGVtAEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0
+ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBD
+dWx0dXJlSW5mbwBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25v
+c3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNU
+XzVhYmFjYTEyMGYxZDQ4MTc5MjE0NmYwNDI0MGNlOGM4LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJl
+c291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTVF81YWJhY2ExMjBmMWQ0ODE3OTIxNDZmMDQyNDBjZThj
+OC5Qcm9wZXJ0aWVzAGdldF9WYXJpYWJsZXMAU2V0dGluZ3MAU3VjY2VzcwBnZXRfRHRzAFNjcmlw
+dFJlc3VsdHMAQ29uY2F0AE9iamVjdABnZXRfRGVmYXVsdABzZXRfVGFza1Jlc3VsdABnZXRfTm93
+AGdldF9Bc3NlbWJseQAAAB95AHkAeQB5AE0ATQBkAGQAXwBIAEgAbQBtAHMAcwAAEUYAaQBsAGUA
+TgBhAG0AZQAAF0MAOgBcAEMAQwBcABdTqJiiWzZiXwABCS4AeABsAHMAAHFTAFQAXwA1AGEAYgBh
+AGMAYQAxADIAMABmADEAZAA0ADgAMQA3ADkAMgAxADQANgBmADAANAAyADQAMABjAGUAOABjADgA
+LgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAACxptKMSMmZQ7w2qJeW
+kDccAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFVBQcCDhE9BAAAET0EIAEODgQgABJlBCAAEmkF
+IAESbRwGAAMODg4OBCABARwGAAESdRF5BCAAEn0GIAIBDhJ9CLd6XFYZNOCJCImEXc2AgMyRBAAA
+AAAEAQAAAAMGEk0DBhJRAwYSEAIGCAMGERQEAAASTQQAABJRBQABARJRBAAAEhADAAABBAgAEk0E
+CAASUQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAA
+ACgBACNTVF81YWJhY2ExMjBmMWQ0ODE3OTIxNDZmMDQyNDBjZThjOAAABQEAAAAAFgEAEUNvcHly
+aWdodCBAICAyMDIyAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29y
+a0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0u
+UmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0
+dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291
+cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAOwtAAAAAAAAAAAA
+AAYuAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4LQAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1z
+Y29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAABoEAAAAAAAAAAAAABoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQAckqcgAAABABySpyA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAR6AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABWAwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A
+AAAAAFMAVABfADUAYQBiAGEAYwBhADEAMgAwAGYAMQBkADQAOAAxADcAOQAyADEANAA2AGYAMAA0
+ADIANAAwAGMAZQA4AGMAOAAAAD4ADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAA
+LgA4ADMANQA5AC4AMwA3ADQAMAA0AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAA
+AFMAVABfADUAYQBiAGEAYwBhADEAMgAwAGYAMQBkADQAOAAxADcAOQAyADEANAA2AGYAMAA0ADIA
+NAAwAGMAZQA4AGMAOAAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0
+AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgAyAAAAKgABAAEATABlAGcAYQBsAFQA
+cgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBu
+AGEAbQBlAAAAUwBUAF8ANQBhAGIAYQBjAGEAMQAyADAAZgAxAGQANAA4ADEANwA5ADIAMQA0ADYA
+ZgAwADQAMgA0ADAAYwBlADgAYwA4AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBt
+AGUAAAAAAFMAVABfADUAYQBiAGEAYwBhADEAMgAwAGYAMQBkADQAOAAxADcAOQAyADEANAA2AGYA
+MAA0ADIANAAwAGMAZQA4AGMAOAAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAA
+ADEALgAwAC4AOAAzADUAOQAuADMANwA0ADAANAAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAA
+VgBlAHIAcwBpAG8AbgAAADEALgAwAC4AOAAzADUAOQAuADMANwA0ADAANAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAAAYPgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\匯出客戶成Excel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="資料流程工作"
+      DTS:DTSID="{B78E1A0E-F652-47FA-8BD2-F48852B335F3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="匯出客戶成Excel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\匯出客戶成Excel\Excel 目的地"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel 目的地;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;0"
+              description="Excel 目的地"
+              name="Excel 目的地"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">客戶</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出提供給識別欄位的值是否複製到目的地。如果為 False，則會在目的地自動產生識別欄位的值。只有在開啟快速載入時才會套用。"
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出包含 Null 之資料行的 Null 是否會插入目的地。若是 False，則包含 Null 的資料行的預設值會插入目的地。唯有開啟快速載入時才適用。"
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定快速載入使用的選項。只有開啟快速載入時才會套用。"
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定在資料插入期間發出認可的時間。值為 0 指定在資料插入結束時發出一次認可。只有開啟快速載入時才會套用。"
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\匯出客戶成Excel\Excel 目的地.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入]"
+                  errorOrTruncationOperation="插入"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Excel 目的地輸入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[客戶編號]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="客戶編號"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[客戶編號]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[公司名稱]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="公司名稱"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[公司名稱]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[公司名稱]" />
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[連絡人]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="連絡人"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[連絡人]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人]" />
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[連絡人職稱]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="連絡人職稱"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[連絡人職稱]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]" />
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[地址]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="地址"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[地址]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[地址]" />
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[城市]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="城市"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[城市]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[城市]" />
+                    <inputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].Columns[傳真電話]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="傳真電話"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[傳真電話]"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[傳真電話]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[客戶編號]"
+                      dataType="nText"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[公司名稱]"
+                      dataType="nText"
+                      name="公司名稱" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[連絡人]"
+                      dataType="nText"
+                      name="連絡人" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[連絡人職稱]"
+                      dataType="nText"
+                      name="連絡人職稱" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[地址]"
+                      dataType="nText"
+                      name="地址" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[城市]"
+                      dataType="nText"
+                      name="城市" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[行政區]"
+                      dataType="nText"
+                      name="行政區" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[郵遞區號]"
+                      dataType="nText"
+                      name="郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[國家地區]"
+                      dataType="nText"
+                      name="國家地區" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[電話]"
+                      dataType="nText"
+                      name="電話" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入].ExternalColumns[傳真電話]"
+                      dataType="nText"
+                      name="傳真電話" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\匯出客戶成Excel\Excel 目的地.Outputs[Excel 目的地錯誤輸出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel 目的地錯誤輸出"
+                  synchronousInputId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Outputs[Excel 目的地錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\匯出客戶成Excel\Excel 目的地.Outputs[Excel 目的地錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\Excel 目的地.Outputs[Excel 目的地錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\匯出客戶成Excel\Excel 目的地.Outputs[Excel 目的地錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\匯出客戶成Excel\OLE DB 來源"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB 來源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;7"
+              description="OLE DB 來源"
+              name="OLE DB 來源"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">[dbo].[北風客戶]</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="包含要執行之 SQL 命令的變數。"
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定無法從資料來源取得字碼頁資訊時，要使用的資料行字碼頁。"
+                  name="DefaultCodePage">950</property>
+                <property
+                  dataType="System.Boolean"
+                  description="描述字元資料時，強制使用 DefaultCodePage 屬性值。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="SQL 命令中的參數和變數之間的對應。"
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\匯出客戶成Excel\OLE DB 來源.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出]"
+                  name="OLE DB 來源輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      length="5"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[公司名稱]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[公司名稱]"
+                      length="40"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[公司名稱]"
+                      name="公司名稱"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人]"
+                      length="30"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人]"
+                      name="連絡人"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人職稱]"
+                      length="30"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[地址]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[地址]"
+                      length="60"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[地址]"
+                      name="地址"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[城市]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[城市]"
+                      length="15"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[城市]"
+                      name="城市"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[傳真電話]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[傳真電話]"
+                      length="24"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].Columns[傳真電話]"
+                      name="傳真電話"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[公司名稱]"
+                      dataType="wstr"
+                      length="40"
+                      name="公司名稱" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人]"
+                      dataType="wstr"
+                      length="30"
+                      name="連絡人" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[連絡人職稱]"
+                      dataType="wstr"
+                      length="30"
+                      name="連絡人職稱" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[地址]"
+                      dataType="wstr"
+                      length="60"
+                      name="地址" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[城市]"
+                      dataType="wstr"
+                      length="15"
+                      name="城市" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[行政區]"
+                      dataType="wstr"
+                      length="15"
+                      name="行政區" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[郵遞區號]"
+                      dataType="wstr"
+                      length="10"
+                      name="郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[國家地區]"
+                      dataType="wstr"
+                      length="15"
+                      name="國家地區" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[電話]"
+                      dataType="wstr"
+                      length="24"
+                      name="電話" />
+                    <externalMetadataColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出].ExternalColumns[傳真電話]"
+                      dataType="wstr"
+                      length="24"
+                      name="傳真電話" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出]"
+                  isErrorOut="true"
+                  name="OLE DB 來源錯誤輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[客戶編號]"
+                      name="客戶編號" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[公司名稱]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[公司名稱]"
+                      name="公司名稱" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人]"
+                      name="連絡人" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人職稱]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[連絡人職稱]"
+                      name="連絡人職稱" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[地址]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[地址]"
+                      name="地址" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[城市]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[城市]"
+                      name="城市" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[傳真電話]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[傳真電話]"
+                      name="傳真電話" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\匯出客戶成Excel.Paths[OLE DB 來源輸出]"
+              endId="Package\匯出客戶成Excel\Excel 目的地.Inputs[Excel 目的地輸入]"
+              name="OLE DB 來源輸出"
+              startId="Package\匯出客戶成Excel\OLE DB 來源.Outputs[OLE DB 來源輸出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7986D690-8B4E-49C6-B0B3-92A1219E6CF2}"
+      DTS:From="Package\動態產生Excel檔名"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\動態建立Excel檔並建立目標Sheet" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4B837855-9865-417C-A06F-35AA1E5CFD0F}"
+      DTS:From="Package\動態建立Excel檔並建立目標Sheet"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\匯出客戶成Excel" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\動態產生Excel檔名"
+          TopLeft="234.285718275576,11.4705883961648" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\匯出客戶成Excel"
+          TopLeft="240.714289813625,209.529414703277" />
+        <NodeLayout
+          Size="259.2,41.6"
+          Id="Package\動態建立Excel檔並建立目標Sheet"
+          TopLeft="204.285717764679,109.352942710104" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="324.285718275576,53.0705883961648">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.59999948910325,56.2823543139395"
+              Start="0,0"
+              End="9.59999948910325,48.7823543139395">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1411771569698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1411771569698"
+                    Point2="0,28.1411771569698"
+                    Point3="4,28.1411771569698" />
+                  <mssgle:LineSegment
+                    End="5.59999948910325,28.1411771569698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.59999948910325,28.1411771569698"
+                    Point2="9.59999948910325,28.1411771569698"
+                    Point3="9.59999948910325,32.1411771569698" />
+                  <mssgle:LineSegment
+                    End="9.59999948910325,48.7823543139395" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="333.885717764679,150.952942710104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.17142795105389,58.5764719931724"
+              Start="0,0"
+              End="-9.17142795105389,51.0764719931724">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.2882359965862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.2882359965862"
+                    Point2="0,29.2882359965862"
+                    Point3="-4,29.2882359965862" />
+                  <mssgle:LineSegment
+                    End="-5.17142795105389,29.2882359965862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.17142795105389,29.2882359965862"
+                    Point2="-9.17142795105389,29.2882359965862"
+                    Point3="-9.17142795105389,33.2882359965862" />
+                  <mssgle:LineSegment
+                    End="-9.17142795105389,51.0764719931724" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\匯出客戶成Excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\匯出客戶成Excel\OLE DB 來源"
+          TopLeft="348,73" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\匯出客戶成Excel\Excel 目的地"
+          TopLeft="403.571435444209,182.764708445559" />
+        <EdgeLayout
+          Id="Package\匯出客戶成Excel.Paths[OLE DB 來源輸出]"
+          TopLeft="422.8,114.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.3714354442092,68.1647084455589"
+              Start="0,0"
+              End="54.3714354442092,60.6647084455589">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0823542227795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.0823542227795"
+                    Point2="0,34.0823542227795"
+                    Point3="4,34.0823542227795" />
+                  <mssgle:LineSegment
+                    End="50.3714354442092,34.0823542227795" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.3714354442092,34.0823542227795"
+                    Point2="54.3714354442092,34.0823542227795"
+                    Point3="54.3714354442092,38.0823542227795" />
+                  <mssgle:LineSegment
+                    End="54.3714354442092,60.6647084455589" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\匯出客戶成Excel\OLE DB 來源">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\匯出客戶成Excel\Excel 目的地">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

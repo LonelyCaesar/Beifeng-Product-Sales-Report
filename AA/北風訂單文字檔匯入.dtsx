@@ -1,0 +1,964 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/27/2022 11:14:25 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MB-201-00"
+  DTS:CreatorName="MB-201-00\MB-teacher"
+  DTS:Description="SSIS 封裝描述"
+  DTS:DTSID="{3F19E1E0-8C24-4458-B487-803B8483634A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.229"
+  DTS:LocaleID="1028"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="北風訂單文字檔匯入"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{84CE2722-D494-4ADB-AB17-7656AAA7E3F6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3833ABB1-0442-433E-94AF-1B36FBD54099}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=MB-201-00;Initial Catalog=練習;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CF34B28D-7D51-40ED-A5E0-8032F1097CB6}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1028"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="950"
+          DTS:ConnectionString="C:\AA\北風訂單.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="訂單號碼"
+              DTS:DTSID="{6E0B1945-63BD-4466-9253-495677CD1736}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="客戶編號"
+              DTS:DTSID="{1ABE1F9F-7215-40B9-9DDB-C293B32D9654}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="員工編號"
+              DTS:DTSID="{219769E5-95EC-44C9-9AD3-3A22E0AEBD78}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="訂單日期"
+              DTS:DTSID="{FA97CC5B-1532-4C34-822A-664146AAE43B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="要貨日期"
+              DTS:DTSID="{31183614-6DCC-4DAD-A17D-DB1EC54B4763}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨日期"
+              DTS:DTSID="{E27F85B1-A0D3-4C52-9708-2C562C002D67}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨方式"
+              DTS:DTSID="{0D79BE09-2534-465A-9A87-C62D8E94ADCE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="運費"
+              DTS:DTSID="{44E75424-EFE3-4D24-8315-477E4F9F151A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="收貨人"
+              DTS:DTSID="{D26E9CCC-C136-4999-8A0C-AD7E9054F8C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨地址"
+              DTS:DTSID="{64E0FD5C-319A-469A-9BBA-2694E829ED6F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨城市"
+              DTS:DTSID="{D3997EDF-9A4A-442F-80F4-7811250F6872}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨行政區"
+              DTS:DTSID="{BB8AC5C2-1FC6-4AED-B9C4-F930E9A93163}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨郵遞區號"
+              DTS:DTSID="{AB74A24F-9628-4A4E-9618-B3443A125A94}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="送貨國家地區"
+              DTS:DTSID="{1C3DC332-93EA-47CE-AA3A-A11EC004E6CB}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\資料流程工作 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{EC0EE3E8-C169-443C-A99C-E1C71DE533B6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="資料流程工作 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\資料流程工作 1\來源 - 北風訂單_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="一般檔案來源;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;1"
+              description="一般檔案來源"
+              localeId="1028"
+              name="來源 - 北風訂單_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="指定零長度資料行是否當成 Null 處理。"
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含檔案名稱之輸出資料行的名稱。如果未指定名稱，將不會產生包含檔案名稱的輸出資料行。"
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出]"
+                  name="一般檔案來源輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[訂單號碼]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[訂單號碼]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[訂單號碼]"
+                      name="訂單號碼"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[客戶編號]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[客戶編號]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[客戶編號]"
+                      name="客戶編號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[員工編號]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[員工編號]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[員工編號]"
+                      name="員工編號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[訂單日期]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[訂單日期]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[訂單日期]"
+                      name="訂單日期"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[要貨日期]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[要貨日期]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[要貨日期]"
+                      name="要貨日期"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨日期]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨日期]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨日期]"
+                      name="送貨日期"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨方式]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨方式]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨方式]"
+                      name="送貨方式"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[運費]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[運費]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[運費]"
+                      name="運費"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[收貨人]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[收貨人]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[收貨人]"
+                      name="收貨人"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨地址]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨地址]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨地址]"
+                      name="送貨地址"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨城市]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨城市]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨城市]"
+                      name="送貨城市"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨行政區]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨行政區]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨行政區]"
+                      name="送貨行政區"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨郵遞區號]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨郵遞區號]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨郵遞區號]"
+                      name="送貨郵遞區號"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨國家地區]"
+                      codePage="950"
+                      dataType="str"
+                      errorOrTruncationOperation="轉換"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨國家地區]"
+                      length="50"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨國家地區]"
+                      name="送貨國家地區"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料行是否使用更快、地區設定中立的剖析常式。"
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="指出資料是否為二進位格式。"
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[訂單號碼]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="訂單號碼" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[客戶編號]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[員工編號]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="員工編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[訂單日期]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="訂單日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[要貨日期]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="要貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨日期]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨方式]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨方式" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[運費]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="運費" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[收貨人]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="收貨人" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨地址]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨地址" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨城市]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨城市" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨行政區]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨行政區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨郵遞區號]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].ExternalColumns[送貨國家地區]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨國家地區" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出]"
+                  isErrorOut="true"
+                  name="一般檔案來源錯誤輸出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出].Columns[一般檔案來源錯誤輸出資料行]"
+                      codePage="950"
+                      dataType="text"
+                      description="一般檔案來源錯誤輸出資料行"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出].Columns[一般檔案來源錯誤輸出資料行]"
+                      name="一般檔案來源錯誤輸出資料行" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\資料流程工作 1\目的地 - 北風訂單"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB 目的地;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; 著作權所有，並保留一切權利; http://www.microsoft.com/sql/support;4"
+              description="OLE DB 目的地"
+              name="目的地 - 北風訂單"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="命令逾時之前的秒數。值為 0 表示無限逾時。"
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="指定用於開啟資料列集之資料庫物件的名稱。"
+                  name="OpenRowset">[dbo].[北風訂單]</property>
+                <property
+                  dataType="System.String"
+                  description="指定包含用於開啟資料列集之資料庫物件名稱的變數。"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="要執行的 SQL 命令。"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定無法從資料來源取得字碼頁資訊時，要使用的資料行字碼頁。"
+                  name="DefaultCodePage">950</property>
+                <property
+                  dataType="System.Boolean"
+                  description="描述字元資料時，強制使用 DefaultCodePage 屬性值。"
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定用於存取資料庫的模式。"
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出提供給識別欄位的值是否複製到目的地。如果為 False，則會在目的地自動產生識別欄位的值。只有在開啟快速載入時才會套用。"
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指出包含 Null 之資料行的 Null 是否會插入目的地。若是 False，則包含 Null 的資料行的預設值會插入目的地。唯有開啟快速載入時才適用。"
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="指定快速載入使用的選項。只有開啟快速載入時才會套用。"
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定在資料插入期間發出認可的時間。值為 0 指定在資料插入結束時發出一次認可。只有開啟快速載入時才會套用。"
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\資料流程工作 1\目的地 - 北風訂單.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="用於存取資料庫的 OLE DB 執行階段連接。"
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input]"
+                  errorOrTruncationOperation="插入"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[訂單號碼]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="訂單號碼"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[訂單號碼]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[訂單號碼]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[客戶編號]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="客戶編號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[客戶編號]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[客戶編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[員工編號]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="員工編號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[員工編號]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[員工編號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[訂單日期]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="訂單日期"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[訂單日期]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[訂單日期]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[要貨日期]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="要貨日期"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[要貨日期]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[要貨日期]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨日期]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨日期"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨日期]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨日期]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨方式]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨方式"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨方式]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨方式]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[運費]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="運費"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[運費]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[運費]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[收貨人]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="收貨人"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[收貨人]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[收貨人]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨地址]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨地址"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨地址]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨地址]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨城市]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨城市"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨城市]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨城市]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨行政區]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨行政區"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨行政區]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨行政區]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨郵遞區號]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨郵遞區號"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨郵遞區號]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨郵遞區號]" />
+                    <inputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].Columns[送貨國家地區]"
+                      cachedCodepage="950"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="送貨國家地區"
+                      externalMetadataColumnId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨國家地區]"
+                      lineageId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出].Columns[送貨國家地區]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[訂單號碼]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="訂單號碼" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[客戶編號]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="客戶編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[員工編號]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="員工編號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[訂單日期]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="訂單日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[要貨日期]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="要貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨日期]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨日期" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨方式]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨方式" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[運費]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="運費" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[收貨人]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="收貨人" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨地址]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨地址" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨城市]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨城市" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨行政區]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨行政區" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨郵遞區號]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨郵遞區號" />
+                    <externalMetadataColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input].ExternalColumns[送貨國家地區]"
+                      codePage="950"
+                      dataType="str"
+                      length="50"
+                      name="送貨國家地區" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\資料流程工作 1\目的地 - 北風訂單.Outputs[OLE DB 目的地錯誤輸出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB 目的地錯誤輸出"
+                  synchronousInputId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Outputs[OLE DB 目的地錯誤輸出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\目的地 - 北風訂單.Outputs[OLE DB 目的地錯誤輸出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\資料流程工作 1\目的地 - 北風訂單.Outputs[OLE DB 目的地錯誤輸出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\資料流程工作 1\目的地 - 北風訂單.Outputs[OLE DB 目的地錯誤輸出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\資料流程工作 1.Paths[一般檔案來源輸出]"
+              endId="Package\資料流程工作 1\目的地 - 北風訂單.Inputs[Destination Input]"
+              name="一般檔案來源輸出"
+              startId="Package\資料流程工作 1\來源 - 北風訂單_csv.Outputs[一般檔案來源輸出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

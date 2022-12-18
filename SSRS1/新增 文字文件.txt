@@ -1,0 +1,3 @@
+= "第 " & Globals!PageNumber & " 頁，共 " & Globals!TotalPages & " 頁"
+
+= Count(Fields!員工編號.Value) & " 人"

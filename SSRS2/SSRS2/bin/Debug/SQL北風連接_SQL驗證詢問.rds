@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SQL北風連接_SQL驗證詢問">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=LAPTOP-0VBSIAN5\MSSQLSERVER01;Initial Catalog=中文北風</ConnectString>
+    <Prompt>請輸入使用名稱和密碼：</Prompt>
+  </ConnectionProperties>
+  <DataSourceID>a20f238b-181c-47ae-bbce-1152fb956592</DataSourceID>
+</RptDataSource>

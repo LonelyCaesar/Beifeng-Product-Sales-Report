@@ -1,0 +1,19 @@
+USE [中文北風]
+GO
+
+/****** Object:  Table [dbo].[EDM客戶]    Script Date: 2022/11/22 下午 09:02:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[EDM客戶](
+	[客戶編號] [nvarchar](5) NULL,
+	[公司名稱] [nvarchar](40) NOT NULL,
+	[連絡人] [nvarchar](30) NULL,
+	[連絡人職稱] [nvarchar](30) NULL,
+	[電話] [nvarchar](24) NULL,
+	[電子郵件] [nvarchar](50) NULL,
+) ON [PRIMARY]
+GO

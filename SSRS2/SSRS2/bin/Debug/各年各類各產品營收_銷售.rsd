@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>SQL北風連接_SQL驗證(Mickey)</DataSourceReference>
+      <CommandText>SELECT FORMAT(YEAR(A.訂單日期),'g') as 訂單年,D.類別名稱,C.產品,ROUND(SUM(B.單價*B.數量*(1-B.折扣)), 0) AS 營收,SUM(B.數量) AS 銷售量
+    FROM 訂貨主檔 AS A JOIN 訂貨明細 AS B ON A.訂單號碼=B.訂單號碼
+	    JOIN 產品資料 AS C ON B.產品編號=C.產品編號
+		JOIN 產品類別 AS D ON C.類別編號=D.類別編號
+GROUP BY YEAR(A.訂單日期),D.類別名稱,C.產品</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="訂單年">
+        <DataField>訂單年</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="類別名稱">
+        <DataField>類別名稱</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="產品">
+        <DataField>產品</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="營收">
+        <DataField>營收</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="銷售量">
+        <DataField>銷售量</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

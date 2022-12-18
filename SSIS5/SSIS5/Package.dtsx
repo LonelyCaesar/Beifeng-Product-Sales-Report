@@ -1,0 +1,151 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/19/2022 4:45:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-0VBSIAN5"
+  DTS:CreatorName="LAPTOP-0VBSIAN5\hello"
+  DTS:DTSID="{421FF28A-EDDC-4AFA-93DE-462C6D734245}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.694.0"
+  DTS:LocaleID="1028"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{C32BDB44-F876-451B-9DE5-6C525B1074F7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FB66E0CE-5B81-4880-8431-AE7D2485B621}"
+      DTS:ObjectName="LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-0VBSIAN5\MSSQLSERVER01;Initial Catalog=中文北風;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{FB66E0CE-5B81-4880-8431-AE7D2485B621}LAPTOP-0VBSIAN5\MSSQLSERVER01.中文北風;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[北風客戶.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{7AAC7311-D01F-45CB-86BF-FE453241F65C}"
+      DTS:ObjectName="北風客戶.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\AA\北風客戶.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\大量插入工作"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="大量插入工作"
+      DTS:DTSID="{4C4AE209-E7A4-4EFD-8145-BF8DEC19FAEB}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="大量插入工作"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{7AAC7311-D01F-45CB-86BF-FE453241F65C}"
+          BulkInsertTask:DestinationConnectionName="{FB66E0CE-5B81-4880-8431-AE7D2485B621}"
+          BulkInsertTask:DataFileType="DTSBulkInsert_DataFileType_WideChar"
+          BulkInsertTask:DestinationTableName="[dbo].[北風客戶]"
+          BulkInsertTask:FieldTerminator="Comma {,}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\大量插入工作_格式檔_多匯少"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="大量插入工作"
+      DTS:DTSID="{07A27B05-CF62-4FE1-B86B-0907CA945059}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="大量插入工作_格式檔_多匯少"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{7AAC7311-D01F-45CB-86BF-FE453241F65C}"
+          BulkInsertTask:DestinationConnectionName="{FB66E0CE-5B81-4880-8431-AE7D2485B621}"
+          BulkInsertTask:DataFileType="DTSBulkInsert_DataFileType_WideChar"
+          BulkInsertTask:DestinationTableName="[dbo].[北風客戶少]"
+          BulkInsertTask:FieldTerminator="Comma {,}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5B8C5EB2-CF87-4C9D-9410-DAD0248315EF}"
+      DTS:From="Package\大量插入工作"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\大量插入工作_格式檔_多匯少" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\大量插入工作"
+          TopLeft="265.000004512923,58.8823537669793" />
+        <NodeLayout
+          Size="236,41.6"
+          Id="Package\大量插入工作_格式檔_多匯少"
+          TopLeft="202.85714631178,191.941179162491" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="340.200004512923,100.482353766979">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.3428582011437,91.4588253955115"
+              Start="0,0"
+              End="-19.3428582011437,83.9588253955115">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.7294126977557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.7294126977557"
+                    Point2="0,45.7294126977557"
+                    Point3="-4,45.7294126977557" />
+                  <mssgle:LineSegment
+                    End="-15.3428582011437,45.7294126977557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.3428582011437,45.7294126977557"
+                    Point2="-19.3428582011437,45.7294126977557"
+                    Point3="-19.3428582011437,49.7294126977557" />
+                  <mssgle:LineSegment
+                    End="-19.3428582011437,83.9588253955115" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
